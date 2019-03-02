@@ -1,34 +1,47 @@
-#selection sort
-def mySearchSelection(my_array):
-    for i in range(len(my_array)-1,0,-1):
-        maxIndex=0
-        for j in range (1,i+1):
-            if(my_array[j]>my_array[maxIndex]):
-                maxIndex=j
-        temp=my_array[j]
-        my_array[j]=my_array[maxIndex]
-        my_array[maxIndex]=temp
-    return
-#binary search
-def binarySearch(sortedarray,item):
-    first=0
-    last=len(sortedarray)-1
-    found=False
-    s=0
-    while first<=last and not found:
-        midpoint=(first+last)//2
-        print("first - last",first,last)
-        if(sortedarray[midpoint]==item):
-            found=True
-        else:
-            if(item<sortedarray[midpoint]):
-                last=midpoint-1
-            else:
-                first=midpoint+1
-                s=s+1
-    return found,midpoint,s
+def fibo_loop(n):
+    a,b=0,1
+    for i in range(n-1):
+        a,b=b,a+b
+    return a
 
-my_arr=[11,27,7,98,55,9,8,31,69,77,34]
-mySearchSelection(my_arr)
-print(my_arr)
-print(binarySearch(my_arr,27))
+def fibo_rec(n):
+    if(n<2):
+        return n
+    else:
+        return fibo_rec(n-1)+fibo_rec(n-2)
+
+def fakt(n):
+    s=1
+    for i in range(1,n+1):
+        s=s*i
+    return s
+
+def fakt_rec(n):
+    if(n==1):
+        return n
+    else:
+        return n*fakt_rec(n-1)
+
+def power(m,n):
+    s=m
+    for i in range(1,n):
+        s=s*m
+    return s
+
+def power_rec(m,n):
+    if(n==0):
+        return 1
+    elif(n==1):
+        return m
+    elif(n%2==0):
+        return power_rec(m*m,int(n/2))
+    elif(n%2!=0):
+        return power_rec(m*m,int(n/2))*m
+    return m
+
+print(fibo_loop(15))
+print(fibo_rec(14))
+print(fakt(5))
+print(fakt_rec(5))
+print(power(5,7))
+print(power_rec(5,7))
