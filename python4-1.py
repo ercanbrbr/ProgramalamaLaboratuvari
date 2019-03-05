@@ -2,7 +2,7 @@ matrix_1=[[1,2,3],[4,5,6]]
 matrix_2=[[7,8,9],[10,11,12]]
 
 matrix_3=[[1,2],[3,4]]
-matrix_4=[[5,6,7],[8,9,10]]
+matrix_4=[[1,2,3],[4,5,6],[7,8,9]]
 alpha=10
 
 def my_vector_inner_product(v,w):
@@ -65,6 +65,46 @@ def mat_carp(m1,m2):
             result[row].append(c)
     return result     
 
+def mat_det2by2(m1):
+    s1=m1[0][0]*m1[1][1]
+    s2=m1[0][1]*m1[1][0]
+    s3=s1-s2
+    return s3
+
+def mat_sil(m1,m,n):
+    result=[]
+    size_1=len((m1))
+    size_2=len((m1[0]))
+    for i in range(size_1):
+        if(i==m):
+            continue
+        row1=[]
+        for j in range(size_2):
+            if(j==n):
+                continue
+            row1.append(m1[i][j])
+        result.append(row1)
+    return result
+            
+def mat_det(m1):
+    a1=m1[0][0]
+    a2=mat_sil(m1,0,0)
+    a3=mat_det2by2(a2)
+    a4=a1*a3
+
+    b1=m1[0][1]
+    b2=mat_sil(m1,0,1)
+    b3=mat_det2by2(b2)
+    b4=b1*b3
+
+    c1=m1[0][2]
+    c2=mat_sil(m1,0,2)
+    c3=mat_det2by2(c2)
+    c4=c1*c3
+
+    return a4-b4+c4
+
+            
 
 print(mat_topla(matrix_1,matrix_2))
 print(mat_cikar(matrix_1,matrix_2))
@@ -72,3 +112,8 @@ r=mat_skaler_carp(matrix_1,alpha)
 print(f1(matrix_1,1))
 print(f2(matrix_2,2))
 print(mat_carp(matrix_3,matrix_4))
+print(mat_det2by2(matrix_3))
+
+print(mat_sil(matrix_4,0,0))
+
+print(mat_det(matrix_4))
