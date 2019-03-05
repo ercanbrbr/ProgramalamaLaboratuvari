@@ -3,6 +3,7 @@ matrix_2=[[7,8,9],[10,11,12]]
 
 matrix_3=[[1,2],[3,4]]
 matrix_4=[[1,2,3],[4,5,6],[7,8,9]]
+matrix_5=[[1,2,3,4],[5,6,7,8],[9,10,11,12],[9,10,11,12]]
 alpha=10
 
 def my_vector_inner_product(v,w):
@@ -86,7 +87,7 @@ def mat_sil(m1,m,n):
         result.append(row1)
     return result
             
-def mat_det(m1):
+def mat_det3by3(m1):
     a1=m1[0][0]
     a2=mat_sil(m1,0,0)
     a3=mat_det2by2(a2)
@@ -104,6 +105,28 @@ def mat_det(m1):
 
     return a4-b4+c4
 
+def mat_det4by4(m1):
+    a1=m1[0][0]
+    a2=mat_sil(m1,0,0)
+    a3=mat_det3by3(a2)
+    a4=a1*a3
+
+    b1=m1[0][1]
+    b2=mat_sil(m1,0,1)
+    b3=mat_det3by3(b2)
+    b4=b1*b3
+
+    c1=m1[0][2]
+    c2=mat_sil(m1,0,2)
+    c3=mat_det3by3(c2)
+    c4=c1*c3
+
+    d1=m1[0][3]
+    d2=mat_sil(m1,0,3)
+    d3=mat_det3by3(d2)
+    d4=d1*d3
+
+    return a4-b4+c4-d4
             
 
 print(mat_topla(matrix_1,matrix_2))
@@ -116,4 +139,5 @@ print(mat_det2by2(matrix_3))
 
 print(mat_sil(matrix_4,0,0))
 
-print(mat_det(matrix_4))
+print(mat_det3by3(matrix_4))
+print(mat_det4by4(matrix_5))
