@@ -141,3 +141,8 @@ print(mat_sil(matrix_4,0,0))
 
 print(mat_det3by3(matrix_4))
 print(mat_det4by4(matrix_5))
+
+
+#11 mart pazartesi ders saati başlangıcına aşağıdaki formatta çalışmalarınızı teslim ediniz. 
+# tarih konum github linki yükleme zamanı
+#altına github sayfası ss
