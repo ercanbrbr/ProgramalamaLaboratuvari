@@ -10,6 +10,30 @@ def fibo_rec(n):
     else:
         return fibo_rec(n-1)+fibo_rec(n-2)
 
+def fibo_rec2(n,memo):
+    if(memo[n]!=None):
+        return memo[n]
+    if(n<2):
+        result=1
+    else:
+        result=fibo_rec(n-1)+fibo_rec(n-2)
+    memo[n]=result
+    return result
+
+def fib_memo(n):
+    memo=[None]*(n+1)
+    return fibo_rec2(n,memo)
+
+def fibo_bottomup(n):
+    if (n==1 or n==2):
+        return 1
+    bottomup=[None]*(n+1)
+    bottomup[1]=1
+    bottomup[2]=1
+    for i in range(3,n+1):
+        bottomup[i]=bottomup[i-1]+bottomup[i-2]
+    return bottomup[n]
+
 def fakt(n):
     s=1
     for i in range(1,n+1):
@@ -40,7 +64,9 @@ def power_rec(m,n):
     return m
 
 print(fibo_loop(15))
-print(fibo_rec(14))
+print(fibo_rec(15))
+print(fib_memo(15))
+print(fibo_bottomup(15))
 print(fakt(5))
 print(fakt_rec(5))
 print(power(5,7))
