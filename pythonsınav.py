@@ -1,31 +1,38 @@
 class oku():
-    def __init__(self, dosya=""):
+    def __init__(self,dosyam=""):
         f=open("C:\\Users\\asus\\Desktop\\file.txt","r")
-        myContent=f.read()
-        cümle = myContent.split(".")
-        self.myWords=[]
-        for sentence in cümle:
-            WordsInTheSentence=sentence.split(" ")
-            for word_1 in WordsInTheSentence:
-                self.myWords.append(word_1)
-        self.frek1()
-        # self.frek2(self.words)
-        self.wfrek1()
-        # self.wfrek2(self.words)
-        
-    def frek1(self):
+        kitap=f.read()
+        cumleler=kitap.split(".")#cümlelere ayır,listeye at
+        self.kelime=[]
+        for i in cumleler:
+            kelimeler=i.split(" ")
+            for k in kelimeler:
+                self.kelime.append(k)
+        self.kelimefrekans()
+        self.kelimefrekyaz()
+        self.kelimefrek2li()
+        self.kelimefrek2yaz()
+    def kelimefrekans(self):
         self.freklist1={}
-        for word in self.myWords:
-            if(word in self.freklist1):
-                self.freklist1[word]+=1
+        for k in self.kelime:
+            if(k in self.freklist1):
+                self.freklist1[k]+=1
             else:
-                self.freklist1[word]=1
-        
-    # def frek2():
-    def wfrek1(self):
-        for word1 in self.freklist1:
-            print(word1+" "+str(self.freklist1[word1]))
-    # def wfrek2():
+                self.freklist1[k]=1
+    def kelimefrekyaz(self):
+        for k in self.freklist1:
+            print(k+" "+str(self.freklist1[k]))
+    def kelimefrek2li(self):
+        self.freklist2={}
+        for k in range(len(self.kelime)-1):
+            w1,w2=self.kelime[k],self.kelime[k+1]
+            if((w1,w2) in self.freklist2):
+                self.freklist2[(w1,w2)]+=1
+            else:
+                self.freklist2[(w1,w2)]=1
+            
+    def kelimefrek2yaz(self):
+        for k in self.freklist2:
+            print(str(k)+" "+str(self.freklist2[k]))
 
-myclass1=oku()
-print(myclass1.freklist1['all'])
+oku1=oku()
