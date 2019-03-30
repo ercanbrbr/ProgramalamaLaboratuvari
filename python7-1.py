@@ -28,29 +28,26 @@ import numpy
 #     return mean
 
 # print(atSim(10,10000))
-def flipPlot(minExp, maxExp):
-    ratios, diffs, xAxis = [], [], []
-    for exp in range(minExp, maxExp + 1):
-        xAxis.append(2**exp)
-    for numFlips in xAxis:
-        numHeads = 0
-        for n in range(numFlips):
-            if random.choice(('H', 'T')) == 'H':
-                numHeads += 1
-                numTails = numFlips - numHeads
-        try:
-            ratios.append(numHeads/numTails)
-            diffs.append(abs(numHeads - numTails))
-        except ZeroDivisionError:
-            continue
-    pylab.title('Difference Between Heads and Tails')
-    pylab.xlabel('Number of Flips')
-    pylab.ylabel('Abs(#Heads - #Tails)')
-    pylab.plot(xAxis, diffs, 'k')
+def yazıtura(enaz,encok):
+    deneme=[]
+    ybölüt=[]
+    yeksit=[]
+    for i in range(enaz,encok+1):
+        deneme.append(2**i)
+    for dene in deneme:
+        ysayısı=0
+        tsayısı=0
+        for n in range(dene):
+            if(random.choice(('Y','T'))=='Y'):
+                ysayısı+=1
+            else:
+                tsayısı+=1
+        ybölüt.append(ysayısı/tsayısı)
+        yeksit.append(abs(ysayısı-tsayısı))
+    pylab.title('Yazı-Tura Farkı')
+    pylab.xlabel('Deneme Sayısı')
+    pylab.plot(deneme,yeksit)
     pylab.figure()
-    pylab.title('Heads/Tails Ratios')
-    pylab.xlabel('Number of Flips')
-    pylab.ylabel('#Heads/#Tails')
-    pylab.plot(xAxis, ratios, 'k')
-random.seed(0)
-flipPlot(4, 20)
+    pylab.title('Yazı/Tura Oranı')
+    pylab.xlabel('Deneme Sayısı')
+    pylab.plot(deneme,ybölüt)
