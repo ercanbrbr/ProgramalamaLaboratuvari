@@ -1,48 +1,46 @@
-list=[]
+import random
 class myNode(object):
-    def __init__(self,v=0):
-        self.value=v
-        self.left=None
-        self.right=None
-        
-
+    def __init__(self, v=0):
+        #previous --> left
+        #next --> right
+        self.previous = None
+        self.next = None
+        self.val = v
 
 class myTree(object):
     def __init__(self):
-        self.root=myNode(250)
-    def insert(self,node_1):
-        if(self.root.value>node_1.value):
-            self.root.left=node_1.value
-            # print(self.root.left)
-        elif(self.root.value<node_1.value):
-            self.root.right=node_1.value
-            # print(self.root.right)
+        self.root = myNode(250) #icine aldigi deger agac yapisinin kokunu belirtir. deger belirtilmezse 0 olarak atar.
 
-        else:
-            print("Duplicate Error")
+def inorder(root):
+    if root:
+        inorder(root.previous)
+        print(root.val, end = ' ')
+        inorder(root.next)
         
+def insert_1(root, node):
+    if(root is None):
+        root = node
+    else:
+        if(root.val < node.val):
+            if(root.next is None):
+                root.next = node
+            else:
+                insert_1(root.next, node)
+        else:
+            if(root.previous is None):
+                root.previous = node
+            else:
+                insert_1(root.previous, node)
+                import random
 
-    # def search(node_1):
-
-    # def delete(node_1):
-
-    # def printTree():
 def test():
-    t1=myTree()
-    t1.insert(myNode(-20))
-    t1.insert(myNode(300))
-
-    print(t1.root.value)
-    print(t1.root.right)
-    print(t1.root.left)
-    
-    
-
-def printTree(tree):
-    while(tree.left!=None):
-        print(tree.left)
-    print(tree.value)
-    while(tree.right!=None):
-        print(tree.right)
+    numbers = []
+    for x in range(5):
+        numbers.append(random.randint(1,101))
+    numbers
+    tree_1 = myTree()
+    for n in numbers:
+        insert_1(tree_1.root, myNode(n))
+    inorder(tree_1.root)
 
 test()
