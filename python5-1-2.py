@@ -9,11 +9,7 @@ def asd(a):
             toplam=0
 
     print(sonuc)
-    buyuk=0
-    for l in range(len(sonuc)):
-        if(sonuc[l]>buyuk):
-            buyuk=sonuc[l]
-    return buyuk
+    return max(sonuc)
 
 liste=[4,-3,2,-1,-2,6,-5]
 print(asd(liste))
