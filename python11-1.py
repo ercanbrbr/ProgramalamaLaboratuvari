@@ -44,11 +44,11 @@ def insertionsort(dizi):
     sayilar2=[]
     for i in dizi:
         sayilar2.append(i)
-    karsilar=0
+    kar=0
     swap=0
     for i in range(1,len(dizi)):
         for j in range(i,0,-1):
-            karsilar+=1
+            kar+=1
             if sayilar2[j]<sayilar2[j-1]:
                 swap+=1
                 #swap
@@ -56,48 +56,59 @@ def insertionsort(dizi):
                 sayilar2[j-1]=sayilar2[j]
                 sayilar2[j]=temp
 
-    return sayilar2,swap,karsilar
+    return sayilar2,swap,kar
+def bubble(dizi):
+    sayilar2=[]
+    for i in dizi:
+        sayilar2.append(i)
+    n=len(dizi)
+    kar=0
+    swap=0
+    for i in range(n):
+        for j in range(0,n-i-1):
+            kar+=1
+            if sayilar2[j] > sayilar2[j+1]:
+                swap+=1
+                sayilar2[j], sayilar2[j+1] = sayilar2[j+1], sayilar2[j]
+    return sayilar2,swap, kar
+def shellsort(dizi):
+    return 0
 def ortswapkar(deneme):
-    swap=[]
+    swapinsert=[]
+    swapbubble=[]
     for i in range(deneme):
         d1=ran(10)
         s1=insertionsort(d1)
+        s2=bubble(d1)
         swap1=s1[1]
-        swap.append(swap1)
-    ortswap=mean(swap)
-    stdswap=ss(swap)
+        swap2=s2[1]
+        swapinsert.append(swap1)
+        swapbubble.append(swap2)
+    ortswapinsert=mean(swapinsert)
+    stdswapinsert=ss(swapinsert)
+    ortswapbubble=mean(swapbubble)
+    stdswapbubble=ss(swapbubble)
+    return ortswapinsert,stdswapinsert,ortswapbubble,stdswapbubble
 
-    return ortswap,stdswap
-
-# dizi=ran(5)
-# print("Dizi..: ",dizi)
-# ort=mean(dizi)
-# print("Ortalama..: ",ort)
-# standart=ss(dizi)
-# print("Standart Sapma..: ",standart)
-# norma=normalize(dizi)
-# print("Normalize Edilmiş..: ",norma)
-# print("Yeni Sayıların Standart Sapması..: ",ss(norma))
-# dizi2=ran(100)
-# print(getmean(dizi2))
-
-# dizi3=ran(5)
-# print(dizi3)
-# print("---------------------")
+print(ortswapkar(100))
 
 
-# print(ortswapkar(100))
 
-def bubble(dizi):
-    n=len(dizi)
-    karsayisi=0
-    swapsayisi=0
-    for i in range(n):
-        for j in range(0,n-i-1):
-            karsayisi+=1
-            if dizi[j] > dizi[j+1]:
-                swapsayisi+=1
-                dizi[j], dizi[j+1] = dizi[j+1], dizi[j]
 
-a=[5,7,8,2,6,5,3]           
-bubble(a)
+
+def bos():
+    '''dizi=ran(5)
+    print("Dizi..: ",dizi)
+    ort=mean(dizi)
+    print("Ortalama..: ",ort)
+    standart=ss(dizi)
+    print("Standart Sapma..: ",standart)
+    norma=normalize(dizi)
+    print("Normalize Edilmiş..: ",norma)
+    print("Yeni Sayıların Standart Sapması..: ",ss(norma))
+    dizi2=ran(100)
+    print(getmean(dizi2))
+
+    dizi3=ran(5)
+    print(dizi3)
+    print("---------------------")'''
